@@ -1,0 +1,139 @@
+{
+  "description": "collar client plugin for Docker Leash",
+  "documentation": "https://github.com/docker-leash/",
+  "entrypoint": [
+    "/srv/docker-collar/start-collar.sh"
+  ],
+  "workdir": "/srv/docker-collar/",
+  "env": [{
+      "name": "DEBUG",
+      "settable": [
+        "value"
+      ],
+      "value": "False"
+    },
+    {
+      "name": "SENTRY_DSN",
+      "settable": [
+        "value"
+      ],
+      "value": null
+    },
+    {
+      "name": "ALLOW_PING",
+      "settable": [
+        "value"
+      ],
+      "value": "True"
+    },
+    {
+      "name": "ALLOW_READONLY",
+      "settable": [
+        "value"
+      ],
+      "value": "False"
+    },
+    {
+      "name": "LEASH_URL",
+      "settable": [
+        "value"
+      ],
+      "value": "https://docker-leash.kumy.org"
+    },
+    {
+      "name": "LEASH_CA_CERT",
+      "settable": [
+        "value"
+      ],
+      "value": "/certs/ca.pem"
+    },
+    {
+      "name": "LEASH_CONNECT_TIMEOUT",
+      "settable": [
+        "value"
+      ],
+      "value": "10"
+    },
+    {
+      "name": "DOCKER_URL",
+      "settable": [
+        "value"
+      ],
+      "value": "https://127.0.0.1:2376"
+    },
+    {
+      "name": "DOCKER_CA_CERT",
+      "settable": [
+        "value"
+      ],
+      "value": "/certs/ca.pem"
+    },
+    {
+      "name": "DOCKER_CERT_FILE",
+      "settable": [
+        "value"
+      ],
+      "value": "/certs/cert.pem"
+    },
+    {
+      "name": "DOCKER_KEY_FILE",
+      "settable": [
+        "value"
+      ],
+      "value": "/certs/key.pem"
+    },
+    {
+      "name": "DOCKER_CONNECT_TIMEOUT",
+      "settable": [
+        "value"
+      ],
+      "value": "10"
+    }
+  ],
+  "mounts": [{
+      "destination": "/certs/",
+      "options": [
+        "rbind"
+      ],
+      "name": "certs",
+      "source": "/etc/docker/plugins/collar.d/",
+      "settable": [
+        "source"
+      ],
+      "type": "bind"
+    },
+    {
+      "destination": "/srv/docker-collar/",
+      "options": [
+        "rbind"
+      ],
+      "name": "code",
+      "source": "/home/kumy/GIT/docker-collar/",
+      "settable": [
+        "source"
+      ],
+      "type": "bind"
+    },
+    {
+      "destination": "/tmp/",
+      "options": [
+        "rbind"
+      ],
+      "name": "debug_tmp",
+      "source": "/tmp/debug/",
+      "settable": [
+        "source"
+      ],
+      "type": "bind"
+    }
+  ],
+  "interface": {
+    "socket": "collar.sock",
+    "types": [
+      "docker.authz/1.0"
+    ]
+  },
+  "network": {
+    "type": "host"
+  }
+}
