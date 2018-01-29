@@ -70,6 +70,8 @@ setup(
     ),
     install_requires=[
         'Flask>=0.12',
+        'requests',
+        'pyOpenSSL',
     ],
     test_suite='tests',
 )

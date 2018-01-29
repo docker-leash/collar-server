@@ -5,7 +5,8 @@ run
 ===
 '''
 
-from docker_collar.collar_client import app
+from docker_collar.collar_client import create_app
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app = create_app(debug=True)
+    app.run(host="0.0.0.0", port=8000, threaded=True)
