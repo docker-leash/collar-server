@@ -10,7 +10,6 @@ import unittest
 from docker_collar.enricher import Enricher
 
 
-
 class EnricherTests(unittest.TestCase):
     """Validation of :cls:`docker_collar.Enricher`
     """
@@ -21,8 +20,3 @@ class EnricherTests(unittest.TestCase):
         enricher = Enricher()
         payload = enricher.add_host({})
         self.assertIn('Host', payload)
-
-    def test_add_container_name(self):
-        """Add container name
-        """
-        pass
