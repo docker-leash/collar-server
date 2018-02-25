@@ -1,4 +1,4 @@
-collar-server
+collar-client
 #############
 
 |codecov|_ |travis|_ |codacy|_ |rtd|_
@@ -6,7 +6,16 @@ collar-server
 Introduction
 ============
 
-The local part for leash-server project.
+`collar-client` is a local plugin aimed to enrich `dockerd` requests for
+`leash-server`.
+
+If your planned rules include relying on clients hostname or containers/images
+names, then you'll need to `install collar-client
+<http://docker-leash.readthedocs.io/en/latest/install/collar-installation.html>`_
+on your machines.
+
+If those are not in your plan, then configure your `dockerd` using `json method
+<http://docker-leash.readthedocs.io/en/latest/install/client-installation.html>`_.
 
 .. Warning::
    This is a work in progress.
